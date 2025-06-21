@@ -4,19 +4,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        Logger logger1 = Logger.Instance;
-        logger1.Log("Application started.");
+        DocumentFactory wordFactory = new WordDocumentFactory();
+        Document word = wordFactory.CreateDocument();
+        word.Open();
 
-        Logger logger2 = Logger.Instance;
-        logger2.Log("Another log message.");
+        DocumentFactory pdfFactory = new PdfDocumentFactory();
+        Document pdf = pdfFactory.CreateDocument();
+        pdf.Open();
 
-        if (logger1 == logger2)
-        {
-            Console.WriteLine("Both logger instances are the same. Singleton works!");
-        }
-        else
-        {
-            Console.WriteLine("Logger instances are different. Singleton failed!");
-        }
+        DocumentFactory excelFactory = new ExcelDocumentFactory();
+        Document excel = excelFactory.CreateDocument();
+        excel.Open();
     }
 }
